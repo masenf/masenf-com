@@ -1,0 +1,39 @@
+/* masenf.css -- custom styles for masenf.com */
+
+body {
+    /*padding-top: 60px;*/
+    padding-bottom: 40px;
+    background-color: #ddd;
+}
+.white_rounded {
+   background-color: #fff; 
+    -moz-border-radius: 7px;
+    border-radius: 7px;
+    padding: 10px;
+    margin-bottom: 15px;
+}
+.time_date_line {
+    color: #aaa;
+    font-style: oblique;
+}
+.tags_line {
+    color: #aaa;
+    font-style: oblique;
+}
+.sidebar-nav {
+    padding: 9px 0;
+}
+.float-left {
+    float: left;
+    padding: 15px;
+}
+.float-right {
+    float: right;
+    padding: 15px;
+}
+.inline {
+    display: inline;
+}
+.pointer {
+    cursor: pointer;
+}

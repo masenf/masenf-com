@@ -1,0 +1,43 @@
+<!--
+:provide page.tmpl.html content
+:require component:posts
+:require component:popular_links
+:output index.html
+-->
+      <div class="resp-collapse row">
+        <div class="span12">
+            <center>
+            <img src="/img/home_header01.png">
+            </center>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="span8">
+          <h2>latest blog</h2>
+          <div class="white_rounded">
+            {posts}
+          </div>
+        </div>
+        <div class="span4">
+          <h2>twitter feed</h2>
+          <div id="twitter_feed">
+          </div>
+          <h2>popular articles</h2>
+          <div class="white_rounded">
+          <ul>
+          {popular_links}
+          </ul>
+          </div>
+          <h2>places to go</h2>
+          <div class="white_rounded">
+          <ul>
+            <li><a href="http://samanthawarring.com/">samantha warring.com</a></li>
+            <li><a href="http://trello.com/">Trello - a simply amazing task manager</a></li>
+            <li><a href="http://www.incredibox.com/en/#/application">Incredibox - beat boxing made easy</a></li>
+            <li><a href="http://repl.it/#:languages">repl.it - try code in your browser</a></li>
+            <li><a href="http://matt.might.net/articles/ssh-hacks/">SSH tricks</a></li>
+          </ul>
+          </div>
+        </div>
+      </div>

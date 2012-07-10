@@ -1,0 +1,102 @@
+<!--
+:require component:sitemap
+:generate page content
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>_masenf.com > {title}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="Masen Furer">
+
+    <!-- Le styles -->
+    <link href="/css/bootstrap.css" rel="stylesheet">
+    </style>
+    <link href="/css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="/css/bootstrap-wysihtml5.css" rel="stylesheet">
+    <link href="/css/masenf.css" rel="stylesheet">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le fav and touch icons -->
+    <link rel="shortcut icon" href="/ico/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="/ico/apple-touch-icon-57-precomposed.png">
+
+    <link rel=”alternate” type=”application/rss+xml” title=”masenf.com_blog” href=”/blog/rss2” />
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="/home/">masenf.com</a>
+          <div class="nav-collapse">
+            <ul class="nav">
+              <li id="nav_home"><a href="/home/">Home</a></li>
+              <li id="nav_blog"><a href="/blog/">Blog</a></li>
+              <li id="nav_projects"><a href="/projects/">Projects</a></li>
+              <li id="nav_abount"><a href="/about/">About</a></li>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+    <div class="container">
+
+    {content}
+      <hr>
+
+      <footer>
+        <div class="row">
+          <div class="span4">
+          <h4>site map</h4>
+          {sitemap}
+          </div>
+          <div class="span4">
+          <h4>contact</h4>
+          <ul>
+          <li>twitter: @masenf</li>
+          <li>email: masenf-[at]-gmail</li>
+          </ul>
+          </div>
+          <div class="span4">
+            <p>&copy; masen furer 2012 -- powered by bootstrap.js</p>
+          </div>
+        </div>
+      </footer>
+
+    </div> <!-- /container -->
+
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="/js/jquery.js"></script>
+    <script src="/js/bootstrap-transition.js"></script>
+    <script src="/js/bootstrap-alert.js"></script>
+    <script src="/js/bootstrap-modal.js"></script>
+    <script src="/js/bootstrap-dropdown.js"></script>
+    <script src="/js/bootstrap-scrollspy.js"></script>
+    <script src="/js/bootstrap-tab.js"></script>
+    <script src="/js/bootstrap-tooltip.js"></script>
+    <script src="/js/bootstrap-popover.js"></script>
+    <script src="/js/bootstrap-button.js"></script>
+    <script src="/js/bootstrap-collapse.js"></script>
+    <script src="/js/bootstrap-carousel.js"></script>
+    <script src="/js/bootstrap-typeahead.js"></script>
+    {scripts}
+  </body>
+</html>

@@ -1,0 +1,98 @@
+masenf.com-rst: Converting masenf.com into a 'static' site
+2012-07-07
+
+Using dynamic pages is slow and breakable. Using static pages is fast
+and portable. Storing content in text files vs. SQLite databases allows
+the data to last and be efficiently archived and used.
+
+From now on, all content on masenf.com will be stored either as
+reStructuredText or HTML5/JS
+
+Folder Hierarchy:
+ - /             contains Makefile and deploy scripts
+ |
+ --- /template   should contain HTML templates for building pages
+ |
+ --- /blog       restructured text posts
+ --- /page       rest or html pages
+ --- /asset      images, etc copied to the output root
+ --- /component  python modules which generate certain page content
+
+Templates
+---------
+Templates are the building blocks that create the site. Each template
+should begin with a metadata header which looks like an HTML comment block
+and contains ReST-like directives. Here the template and component 
+dependencies are listed for the generation engine.
+
+For instance, if a template like blog.tmpl.html is to be inserted into
+a parent template such as page.tmpl.html in the placeholder '{content}':
+:provide page.tmpl.html content
+
+If a template has a placeholder for content from a python component, it
+can be included as well. If we are trying to fill '{nav}' with the
+output from the nav module we can use a directive like this:
+:require component:nav
+In the page, the {nav} tag will be replaced by the output of the module.
+
+To indicate that a template should be used as the destination for ReST/HTML
+output, use the :generate directive. If we want all ReST files in the 
+/blog folder to be rendered in post-full.tmpl.html and replaced by the
+'{post}' tag, we can use this:
+
+:generate blog post
+
+Blogs and Pages
+---------------
+Blogs and pages contain metadata to assist in their organization and processing.
+The most common metadata will be the author, subject, permalink, and tags.
+
+Other metadata may include script dependencies and other directives.
+
+In ReST, the metadata can be inserted directly at the top of the file, 
+for HTML pages, the metadata should be inserted at the top of the file
+in an HTML comment.
+
+:author masen
+:title Yes, another backend redesign
+:published 2012-07-07 1515
+:tag technical
+:tag short
+
+Compilation Process
+-------------------
+
+These steps are taken in order to generate the pages. 
+
+Phase I: Collect information
+1. Scan template directory (read in all template metadata
+2. Scan referenced generate folders for all post metadata
+
+Phase II: Generate content
+3. Generate pages in all 'generate' folders
+4. Generate any templates with :output directives
+5. Copy asset folder to output root
+
+Components
+----------
+Components are python modules which inherit from the WebComponent class.
+The primary method that needs to be overwritten is 'render' which is
+called each time the output is generated.
+
+Each component retains a static, immutable data structure with reference
+to all known pages as well as a pointer to the page requesting this
+component
+
+WebComponent.pages is a tuple of dictionaries. Each dictionary contains
+the key-value pairs taken from the directives described above.
+
+and 
+
+WebComponent.current which is a dictionary of the component being 
+rendered right now.
+
+It is recommended to use memoization or some other technique to cache
+the results of calculations which do not change as the render method
+in the component may be called many times.
+
+
