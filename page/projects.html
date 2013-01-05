@@ -1,0 +1,58 @@
+<!--
+:author masen
+:title projects
+:published 1332714156
+:modified 1349298247
+:permalink 3
+:slug projects
+-->
+
+<h1>projects</h1>
+<div class="row" style="">
+<div class="span4" style="">
+<h2>school</h2>
+<div class="white_rounded" style="">
+<h3>Graphdroid 2012&nbsp;<a href="https://github.com/masenf/GraphDroid2012" rel="nofollow" target="_blank"><span class="label label-info pointer">github</span></a></h3>
+
+<img class="float-left" src="http://masenf.com/img/small_android.png" alt="" height="59" width="50"><p style="" align="">This is a project to bring a fully featured computer algebra system with graphing capability to android phones and tablets. I'm working on this project with Nam Ngo. Currently in its early stages, we aim to have a presentation and public demo available by May 2012.</p><p style="" align="">For CAS, we're using&nbsp;<a href="http://code.google.com/p/symja/" rel="nofollow" target="_blank">symja</a>, which already has an 'expression evaluator' for Android devices. What we seek to replicate is the sort of all-in-one educational ubiquity enjoyed by the likes of TI</p>
+</div>
+<h2>work</h2>
+<div class="white_rounded" style="">
+<h3>Redundant DHCP</h3>
+<img class="float-right" src="http://masenf.com/img/dhcp_square.png" alt="">
+<p style="" align="">My next project at work is implementing redundant DHCP servers. Since I started working for University Residences in 2009, this has been a TODO list item. Now that we've got brand new servers to take care of web proxy. Our older servers can be made to do not just failover, but load balanced DHCP. I'll be using isc-dhcp41-server v4.1-ESV-R4 which includes plenty of new features for making peer'd DHCP less of a nightmare.</p>
+</div>
+<div class="white_rounded" style="">
+<h3>Deploy PostgreSQL Database Server</h3>
+<p style="" align="">This summer ResTek will be transitioning from a MySQL instance running in a VMWare ESX cluster to a brand-new&nbsp;<a href="http://h18004.www1.hp.com/products/quickspecs/14212_div/14212_div.HTML" rel="nofollow" target="_blank">HP Proliant DL380p Gen8</a>&nbsp;sporting 16GB of RAM, 2x72GB 15K disks + 6x300GB 10K disks, and Quad-core Xeon E5-2609 processor. We'll be running FreeBSD 9.0 with dedicated (UFS) slices for OS, postgres data, wal archives, indexes, and mysql data.</p><p style="" align="">As of August 2012, the new Database server is online and keeping data. A successful transition for all apps will be made throughout the academic year 2012-2013</p></div>
+</div>
+<div class="span4" style="">
+<h2>play</h2>
+<div class="white_rounded" style="">
+<h3>Magnetron</h3>My roomate Ryan and I are working on a "rail-based" racing game. I've been describing it as "MarioKart, except you don't have to steer!" except that really is an undue description. It's more of a real-time puzzle game than a racing game -- choose the best lane of track, when the lanes diverge, your best advantage is to be on the short track, or the steep track. A good metaphor is like a RollerCoaster-like racing game, where you can sometimes switch to different rails in order to gain a&nbsp;competitive&nbsp;advantage. It will all make more sense once the demo is released.<img class="float-right" src="http://masenf.com/img/unity.png" alt="" height="63" width="60"><br><br>Currently, we're coding the game in a multi-platform environment using the&nbsp;<a href="http://unity3d.com/" rel="nofollow" target="_blank">Unity3D engine</a>&nbsp;with C# as our scripting language. The game is still in an alpha stage and is not under active development. More news will be posted here.</div>
+
+
+<div class="white_rounded" style="">
+<h3>Faed - Finite Automata Editor&nbsp;<a href="https://github.com/masenf/faed" rel="nofollow" target="_blank"><span class="label label-info pointer">github</span></a></h3>
+
+<img class="float-left" src="http://masenf.com/img/faed_small.png" alt="" height="50" width="60"><p style="" align="">I began working on my finite automata editor after my first week of CSCI 401 - Formal Languages and Automata. I found the subject to be initially interesting and modeling to be extremely helpful in understanding what was going on. My inspiration for using HTML5/Javascript was to enable maximum portability. The end goal is to support Desktop, Android, and iOS platforms.</p>
+<p style="" align="">The editor allows on the fly creation of deterministic and non-deterministic finite automata. After building test strings can be executed against the machine to test for acceptance or rejection. While still a work in progress, eventually users will be able to save machines as JSON or PNG and convert machines to regular expressions and vice versa. Any feature suggestions are welcome. Once I finish the 0.1 release, I will host a live demo of the app on this site.</p>
+</div>
+<div class="white_rounded" style="">
+<h3>Redesign masenf.com</h3>
+<p style="" align="">After redesigning this site in March 2012, I've decided that I don't like the editing interface. In my spare time, I'm moving the site to a reStructuredText/git/vim/python backend in an attempt to free my content from the clutches of strange file formats and markup! The visual look of the page should not be changing too much.</p>
+
+</div></div>
+<div class="span4" style="">
+<div class="white_rounded" style="">
+<h3>Hallusinaattori Remix <a href="http://masenf.com/hallusinaattori-js/hallusinaattori.html" rel="nofollow" target="_blank"><span class="pointer label label-warning">demo</span></a> <a href="http://github.com/masenf/hallusinaattori-js" rel="nofollow" target="_blank"><span class="pointer label label-info">github</span></a></h3>
+<img class="float-left" src="http://masenf.com/img/hallusinaattori.jpg" alt=""><p style="" align="">I've become recently interested in externally induced visual field distortion. I've dug up some old code called Hallusinaattori which creates many moving concentric circles on the screen. Extended viewing of these images will trick the brain into compensating for the rapidly moving shapes. Looking away from the image leaves the compensation in place, causing a change in your visual field</p>
+<p style="" align="">I'll be porting the original code from C to HTML5/JS so you'll be able to experience the effects first hand in your browser! An initial version is available at the demo link above. Click for customization options. Send any suggestions or patches via github.<br></p>
+</div>
+<div class="white_rounded" style="">
+<h3>PyMP <span class="label">coming soon</span></h3>
+<p style="" align="">PyMP is an online music player which streams your own music library over LAN or WAN direct to browsers and mobile devices. The project began in CSCI 330 Databases (Fall '11) with Python, JQuery, and PostgreSQL, and has since been tabled for the past year.</p>
+
+<p style="" align="">In my 'free time' this year I plan to polish it, move to bootstrap/backbone on the client, rewrite the server in C, and release it to the public. We'll see if I can make it happen, watch on github or if you're feeling ambitious, help me out! I'm still looking for a new name as well.</p>
+</div>
+</div></div>

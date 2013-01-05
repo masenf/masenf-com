@@ -1,8 +1,10 @@
-:author Masen Furer
+:author masen
 :title wikiAnswers
-:published 2012-06-08 1604
+:published 1339193087
+:modified 1339193087
+:permalink 12
+:slug wikianswers
 :tag rant
-:tag short
 
 I'd like to share my latest bit of frustration regarding the various 'answer' sites out there. I'll preface this rant by explicitly excluding sites of the StackExchange variety or forums which are answering specific questions, often in regard to implementation or opinion on how to best accomplish a task (even then, often these sites' users do provide valid citations or justifications).
 

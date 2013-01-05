@@ -1,12 +1,8 @@
 # generate.py -- assemble the pieces
 import os
 import shutil
+import time
 from docutils.core import publish_parts
-
-def ensure_dir(f):
-    d = os.path.dirname(f)
-    if not os.path.exists(d):
-        os.makedirs(d)
 
 def test():
     s = Scanner(".")
@@ -20,24 +16,48 @@ class SiteData(object):
         self.content = {}
         self.templates = {}
         self.components = {}
+        self.output_dir = "output"
+    def ensure_dir(self, f):
+        d = os.path.dirname(f)
+        if not os.path.exists(d):
+            os.makedirs(d)
+    def flatten_metadata(self, md):
+        fmd = {}
+        for m in md:
+            if type(md[m]) == list:
+                if len(md[m]) == 1:
+                    fmd[m] = md[m][0]
+                else:
+                    fmd[m] = ", ".join(md[m])
+            else:
+                fmd[m] = str(md[m])
+        return fmd
+
     def render_template(self, tmpl_name, fields):
         t = self.templates[tmpl_name]
         repl = {}
+        print("Fields for {}: {}".format(tmpl_name, ", ".join(fields.keys())))
         for r in t.replacements:
-            if r in t.components:
-                repl[r] = self.components[r].render()
-            elif r in fields:
+            if r in fields:                 # allow fields to override components
                 repl[r] = fields[r]
+            elif r in t.components:
+                repl[r] = self.components[r].render()
+                print("Calling component: {}".format(r))
             else:
                 repl[r] = ""
-        for p in t.parent:
+        for p in t.parent:  # process parent template
             p_tmpl = p[0]
             p_field = p[1]
-            return self.render_template(p_tmpl, {p_field : t.content.format(**repl)})
+            # move forward template data, child data, component evaluation
+            p_repl = self.flatten_metadata(t.metadata)
+            p_repl.update(fields)
+            p_repl.update(repl)
+            p_repl[p_field] = t.content.format(**repl)
+            return self.render_template(p_tmpl, p_repl)
         return t.content.format(**repl)
     def write_file(self, filepath, content):
         print("Writing output to {}".format(filepath))
-        ensure_dir(filepath)
+        self.ensure_dir(filepath)
         with open(filepath, 'w') as f:
             f.write(content)
     def build(self):
@@ -52,7 +72,7 @@ class SiteData(object):
                     content_type = g[0]
                     field = g[1]
                     for c in self.content[content_type]:
-                        fields = c.metadata.copy()
+                        fields = self.flatten_metadata(c.metadata)
                         fields[field] = c.render()
                         raw_output = self.render_template(name, fields)
                         filepath = os.path.join(output_dir, content_type, c.name) + ".html"
@@ -117,7 +137,7 @@ class Scanner(object):
             raw_output = self._scan(gen[0])
             self.data.content[gen[0]] = []
             for name,p in raw_output.iteritems():
-                self.data.content[gen[0]].append(Content(name, p['metadata'], p['content']))
+                self.data.content[gen[0]].append(Content(name, gen[0], p['metadata'], p['content']))
     def init_components(self):
         package = "components"
         for comp in self.components:
@@ -159,16 +179,38 @@ class Template(object):
         self.replacements = Template.repl_re.findall(self.content)
 class Content(object):
     """the template class stores dependencies for rendering a template"""
-    def __init__(self, name, metadata, content):
+    def __init__(self, name, ctype, metadata, content):
         name,ext = name.split('.')
         self.name = name
-        self.ext = ext
+        self.ext = ext      # the original file extension
+        self.ctype = ctype  # the content type (i.e. folder it's in)
         self.metadata = metadata
         self.content = content
+
+        # this is to allow easy sorting/archiving
+        if "published" in self.metadata:
+            self.published = self.metadata['published'][-1]
+            self.metadata["published"] = self.date_parse(self.published)
+        else:
+            self.published = 0
+        if "modified" in self.metadata:
+            self.modified = self.metadata['modified'][-1]
+        else:
+            self.modified = self.published
+        self.metadata["modified"] = self.date_parse(self.modified)
     def __repr__(self):
         return "Content({})".format(self.name)
+    def date_parse(self,value):
+        try:
+            value = float(value)
+            return time.strftime("%Y-%m-%d %H%M",time.localtime(float(value)))
+        except ValueError:
+            return value
     def render(self):
         if self.ext == "rst":
             return publish_parts(self.content, writer_name='html')['body']
         else:
             return self.content
+
+if __name__ == '__main__':
+    test()
