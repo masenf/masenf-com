@@ -62,7 +62,10 @@ class SiteData(object):
             f.write(content)
     def build(self):
         output_dir = "output"
-        shutil.rmtree(output_dir)
+        try:
+            shutil.rmtree(output_dir)
+        except OSError:
+            pass        # don't worry if it doesn't exist
         # copy assets
         shutil.copytree("assets",output_dir)
         # build out templates
