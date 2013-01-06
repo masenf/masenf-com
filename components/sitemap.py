@@ -7,8 +7,8 @@ class Sitemap(Component):
             link = "<li><a href=\"{}\">{}</a><?li>\n"
             for c in self.data.content[ctype]:
                 if "slug" in c.metadata:
-                    url = "/{}/{}.html".format(ctype,c.metadata['slug'][0])
+                    url = "/{}/{}.html".format(ctype,c.metadata['slug'])
                 else:
                     url = "/{}/{}.html".format(ctype.c.name)
-                self.rendered += link.format(url, c.metadata['title'][0])
+                self.rendered += link.format(url, c.metadata['title'])
         return self.rendered

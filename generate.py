@@ -11,6 +11,17 @@ def test():
     s.init_components()
     s.data.build()
 
+# strip extraneous lists
+def flatten_list(l):
+    if type(l) != list:
+        return str(l)
+    if len(l) < 1:
+        return ""
+    elif len(l) == 1:
+        return flatten_list(l[0])
+    else:
+        return map(flatten_list, l)
+
 class SiteData(object):
     def __init__(self):
         self.content = {}
@@ -23,14 +34,18 @@ class SiteData(object):
             os.makedirs(d)
     def flatten_metadata(self, md):
         fmd = {}
-        for m in md:
-            if type(md[m]) == list:
-                if len(md[m]) == 1:
-                    fmd[m] = md[m][0]
-                else:
-                    fmd[m] = ", ".join(md[m])
+        for m,val in md.iteritems():
+            if type(val) == list:
+                for l in val:
+                    if type(l) == list:
+                        if len(l) == 1:
+                            fmd[m] = l[0]
+                        else:
+                            fmd[m] = ", ".join(l)
+                    else:
+                        fmd[m] = str(l)
             else:
-                fmd[m] = str(md[m])
+                fmd[m] = str(val)
         return fmd
 
     def render_template(self, tmpl_name, fields):
@@ -39,12 +54,12 @@ class SiteData(object):
         print("Fields for {}: {}".format(tmpl_name, ", ".join(fields.keys())))
         for r in t.replacements:
             if r in t.require:
-                repl[r] = self.components[r].render(tmpl_name=tmpl_name, fields=fields)
+                repl[r] = self.components[t.require[r]].render(tmpl_name=tmpl_name, fields=fields)
                 print("Calling component: {}".format(r))
             elif r in fields:                 # allow fields to override components
                 repl[r] = fields[r]
             elif r in t.include:
-                repl[r] = self.components[r].render(tmpl_name=tmpl_name, fields=fields)
+                repl[r] = self.components[t.include[r]].render(tmpl_name=tmpl_name, fields=fields)
                 print("Calling component: {}".format(r))
             else:
                 repl[r] = ""
@@ -52,7 +67,7 @@ class SiteData(object):
             p_tmpl = p[0]
             p_field = p[1]
             # move forward template data, child data, component evaluation
-            p_repl = self.flatten_metadata(t.metadata)
+            p_repl = t.metadata.copy()
             p_repl.update(fields)
             p_repl.update(repl)
             p_repl[p_field] = t.content.format(**repl)
@@ -78,7 +93,8 @@ class SiteData(object):
                     content_type = g[0]
                     field = g[1]
                     for c in self.content[content_type]:
-                        fields = self.flatten_metadata(c.metadata)
+                        #fields = self.flatten_metadata(c.metadata)
+                        fields = c.metadata.copy()
                         fields[field] = c.render()
                         raw_output = self.render_template(name, fields)
                         filepath = os.path.join(output_dir, content_type, c.name) + ".html"
@@ -131,7 +147,7 @@ class Scanner(object):
                     self.components.append(mds[1])
                 if mds[0] not in file_info['metadata']:
                     file_info['metadata'][mds[0]] = []
-                file_info['metadata'][mds[0]].append(" ".join(mds[1:]))
+                file_info['metadata'][mds[0]].append(mds[1:])
             output[filename] = file_info
         return output
     def scan_templates(self):
@@ -159,8 +175,8 @@ class Template(object):
     def __init__(self, name, path, metadata, content):
         self.parent = []
         self.generate = []
-        self.require = []
-        self.include = []
+        self.require = {}       # field => component
+        self.include = {}       # field => component
         self.replacements = []
         self.name = name
         self.path = path
@@ -171,19 +187,23 @@ class Template(object):
         self._build_metadata()
         self._build_replacements()
     def __repr__(self):
-        return "Template({}, parent={}, generate={}, components={})".format(self.name, self.parent, self.generate, self.components)
+        return "Template({}, parent={}, generate={}, require={}, include={})".format(self.name, self.parent, self.generate, self.require, self.include)
     def _build_metadata(self):
         for key,value in self.metadata.iteritems():
             if key == 'provide':
-                for p in value:
-                    self.parent.append(p.split(" "))
+                self.parent = value
             elif key == 'require':
-                self.require = value
+                for comp,field in value:
+                    self.require[field] = comp
             elif key == 'include':
-                self.include = value
+                for comp,field in value:
+                    self.include[field] = comp
             elif key == 'generate':
-                for g in value:
-                    self.generate.append(g.split(" "))
+                self.generate = value
+            else:
+                self.metadata[key] = flatten_list(value)
+                if type(self.metadata[key]) == list:
+                    self.metadata[key] = " ".join(self.metadata[key])
     def _build_replacements(self):
         self.replacements = Template.repl_re.findall(self.content)
 class Content(object):
@@ -195,18 +215,30 @@ class Content(object):
         self.ctype = ctype  # the content type (i.e. folder it's in)
         self.metadata = metadata
         self.content = content
+        self._build_metadata()
 
+    def _build_metadata(self):
         # this is to allow easy sorting/archiving
         if "published" in self.metadata:
-            self.published = self.metadata['published'][-1]
+            self.published = self.metadata['published'][-1][0]
             self.metadata["published"] = self.date_parse(self.published)
         else:
             self.published = 0
         if "modified" in self.metadata:
-            self.modified = self.metadata['modified'][-1]
+            self.modified = self.metadata['modified'][-1][0]
         else:
             self.modified = self.published
         self.metadata["modified"] = self.date_parse(self.modified)
+
+        for key,value in self.metadata.iteritems():
+            self.metadata[key] = flatten_list(value)
+            if type(self.metadata[key]) == list:
+                self.metadata[key] = " ".join(self.metadata[key])
+
+        # piece the title back together
+        if type(self.metadata['title']) == list:
+            self.metadata['title'] = " ".join(self.metadata['title'])
+        
     def __repr__(self):
         return "Content({})".format(self.name)
     def date_parse(self,value):

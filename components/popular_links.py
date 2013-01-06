@@ -6,12 +6,13 @@ class Popular_links(Component):
             for ctype in self.data.content:
                 for c in self.data.content[ctype]:
                     if "tag" in c.metadata:
-                        if "popular" in c.metadata["tag"]:
+                        tags = c.metadata["tag"].split(" ")
+                        if "popular" in tags:
                             if "slug" in c.metadata:
-                                url = "/{}/{}.html".format(ctype,c.metadata['slug'][0])
+                                url = "/{}/{}.html".format(ctype,c.metadata['slug'])
                             else:
                                 url = "/{}/{}.html".format(ctype.c.name)
-                            popular.append((url, c.metadata['title'][0]))
+                            popular.append((url, c.metadata['title']))
             self.rendered = ""
             for url,title in popular:
                 self.rendered += "<li><a href=\"{}\">{}</a></li>\n".format(url,title)
