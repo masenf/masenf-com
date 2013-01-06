@@ -49,18 +49,18 @@ class SiteData(object):
         return fmd
 
     def render_template(self, tmpl_name, fields):
+        print("[SiteData] render_template - {}".format(tmpl_name))
         t = self.templates[tmpl_name]
         repl = {}
-        print("Fields for {}: {}".format(tmpl_name, ", ".join(fields.keys())))
         for r in t.replacements:
             if r in t.require:
+                print("[render_template] render req'd component: {}".format(t.require[r]))
                 repl[r] = self.components[t.require[r]].render(tmpl_name=tmpl_name, fields=fields)
-                print("Calling component: {}".format(r))
             elif r in fields:                 # allow fields to override components
                 repl[r] = fields[r]
             elif r in t.include:
+                print("[render_template] render include'd component: {}".format(t.include[r]))
                 repl[r] = self.components[t.include[r]].render(tmpl_name=tmpl_name, fields=fields)
-                print("Calling component: {}".format(r))
             else:
                 repl[r] = ""
         for p in t.parent:  # process parent template
@@ -74,18 +74,12 @@ class SiteData(object):
             return self.render_template(p_tmpl, p_repl)
         return t.content.format(**repl)
     def write_file(self, filepath, content):
-        print("Writing output to {}".format(filepath))
+        print("[SiteData] Writing output to {}".format(filepath))
         self.ensure_dir(filepath)
         with open(filepath, 'w') as f:
             f.write(content)
     def build(self):
         output_dir = "output"
-        try:
-            shutil.rmtree(output_dir)
-        except OSError:
-            pass        # don't worry if it doesn't exist
-        # copy assets
-        shutil.copytree("assets",output_dir)
         # build out templates
         for name,t in self.templates.iteritems():
             if t.generate:
@@ -163,9 +157,11 @@ class Scanner(object):
     def init_components(self):
         package = "components"
         for comp in self.components:
-            cls = comp.capitalize()
-            imported = getattr(__import__("components." + comp, fromlist=[cls]), cls)
-            self.data.components[comp] = imported(self.data)
+            if comp not in self.data.components:
+                cls = comp.capitalize()
+                imported = getattr(__import__("components." + comp, fromlist=[cls]), cls)
+                self.data.components[comp] = imported(self.data)
+
 class Template(object):
     """the template class stores dependencies for rendering a template"""
 
@@ -234,11 +230,22 @@ class Content(object):
             self.metadata[key] = flatten_list(value)
             if type(self.metadata[key]) == list:
                 self.metadata[key] = " ".join(self.metadata[key])
-
-        # piece the title back together
-        if type(self.metadata['title']) == list:
-            self.metadata['title'] = " ".join(self.metadata['title'])
-        
+        if "slug" not in self.metadata:
+            self.metadata["slug"] = self.slugify(self.name)
+        self.name = self.metadata["slug"]
+    def slugify(self, name):                                                                      
+        slug = []
+        a = ord('a')
+        z = ord('z')
+        last_chr = True      # true if the last character printed
+        for ch in name.lower():
+            if ord(ch) >= a and ord(ch) <= z:
+                last_chr = True
+                slug.append(ch) 
+            elif last_chr:
+                last_chr = False
+                slug.append("-")
+        return "".join(slug)
     def __repr__(self):
         return "Content({})".format(self.name)
     def date_parse(self,value):

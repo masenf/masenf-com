@@ -13,17 +13,18 @@ class Posts(Component):
         return sorted(self.data.content['blog'], key=lambda c: c.published, reverse=True)[0:self.NUM_POSTS]
 
     def render(self, *args, **kwds):
+        print("[Posts] rendering posts listing for {}".format(self.__class__))
         if not hasattr(self,"rendered"):
             self.rendered = ""
             # copy all blogposts
             loc_content = self.get_content()
             for post in loc_content:
-                fields = self.data.flatten_metadata(post.metadata)
+                fields = post.metadata
                 fields['link'] = "/{}/{}.html".format(post.ctype,post.name)
                 try:
-                    fields['body'] = htmltruncate.truncate(post.content,self.PREVIEW_CHARS,"...")
+                    fields['body'] = htmltruncate.truncate(post.render(),self.PREVIEW_CHARS,"...")
                 except htmltruncate.UnbalancedError:
-                    print("Error truncating {}, ensure proper document structure".format(post.name))
+                    print("[Posts] Error truncating {}, ensure proper document structure".format(post.name))
                     raise
                 self.rendered += self.data.render_template(self.TEMPLATE, fields)
         return self.rendered

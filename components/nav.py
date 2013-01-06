@@ -9,6 +9,7 @@ class Archive(Posts):
         return self.content
 class Nav(Component):
     def generate_archive(self, ym, content):
+        print("    [Nav] Generate archive listing for {} ({})".format(ym, len(content)))
         a = Archive(self.data)
         a.content = sorted(content,key=lambda c: c.published,reverse=True)
         fields = {}
@@ -21,8 +22,6 @@ class Nav(Component):
         self.data.write_file(filepath, output)
         return relpath
     def render(self, active=None, tmpl_name=None, fields=None):
-        if fields is not None:
-            print("[Nav] tmpl_name={}, fields={}".format(tmpl_name, fields.keys()))
         if not hasattr(self, "order"):
             self.archive_months = {}
             for c in self.data.content['blog']:
