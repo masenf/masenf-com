@@ -32,22 +32,6 @@ class SiteData(object):
         d = os.path.dirname(f)
         if not os.path.exists(d):
             os.makedirs(d)
-    def flatten_metadata(self, md):
-        fmd = {}
-        for m,val in md.iteritems():
-            if type(val) == list:
-                for l in val:
-                    if type(l) == list:
-                        if len(l) == 1:
-                            fmd[m] = l[0]
-                        else:
-                            fmd[m] = ", ".join(l)
-                    else:
-                        fmd[m] = str(l)
-            else:
-                fmd[m] = str(val)
-        return fmd
-
     def render_template(self, tmpl_name, fields):
         print("[SiteData] render_template - {}".format(tmpl_name))
         t = self.templates[tmpl_name]
