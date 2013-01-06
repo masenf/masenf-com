@@ -1,6 +1,6 @@
 from components import Component
 class Sitemap(Component):
-    def render(self):
+    def render(self, *args, **kwds):
         if not hasattr(self, "rendered"):
             self.rendered = ""
             ctype = 'page'

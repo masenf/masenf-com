@@ -20,7 +20,9 @@ class Nav(Component):
         filepath = os.path.join(self.data.output_dir, relpath)
         self.data.write_file(filepath, output)
         return relpath
-    def render(self, active=None):
+    def render(self, active=None, tmpl_name=None, fields=None):
+        if fields is not None:
+            print("[Nav] tmpl_name={}, fields={}".format(tmpl_name, fields.keys()))
         if not hasattr(self, "order"):
             self.archive_months = {}
             for c in self.data.content['blog']:

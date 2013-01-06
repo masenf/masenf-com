@@ -12,7 +12,7 @@ class Posts(Component):
             returns a list of Content """
         return sorted(self.data.content['blog'], key=lambda c: c.published, reverse=True)[0:self.NUM_POSTS]
 
-    def render(self):
+    def render(self, *args, **kwds):
         if not hasattr(self,"rendered"):
             self.rendered = ""
             # copy all blogposts

@@ -1,6 +1,6 @@
 from components import Component
 class Popular_links(Component):
-    def render(self):
+    def render(self, *args, **kwds):
         if not hasattr(self, "rendered"):
             popular = []
             for ctype in self.data.content:

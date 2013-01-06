@@ -38,10 +38,13 @@ class SiteData(object):
         repl = {}
         print("Fields for {}: {}".format(tmpl_name, ", ".join(fields.keys())))
         for r in t.replacements:
-            if r in fields:                 # allow fields to override components
+            if r in t.require:
+                repl[r] = self.components[r].render(tmpl_name=tmpl_name, fields=fields)
+                print("Calling component: {}".format(r))
+            elif r in fields:                 # allow fields to override components
                 repl[r] = fields[r]
-            elif r in t.components:
-                repl[r] = self.components[r].render()
+            elif r in t.include:
+                repl[r] = self.components[r].render(tmpl_name=tmpl_name, fields=fields)
                 print("Calling component: {}".format(r))
             else:
                 repl[r] = ""
@@ -124,7 +127,7 @@ class Scanner(object):
                 mds[0] = mds[0].strip(':')
                 if mds[0] == 'generate':
                     self.generate.append((mds[1],mds[2],filename))
-                if mds[0] == 'require':
+                if mds[0] == 'require' or mds[0] == 'include':
                     self.components.append(mds[1])
                 if mds[0] not in file_info['metadata']:
                     file_info['metadata'][mds[0]] = []
@@ -156,7 +159,8 @@ class Template(object):
     def __init__(self, name, path, metadata, content):
         self.parent = []
         self.generate = []
-        self.components = []
+        self.require = []
+        self.include = []
         self.replacements = []
         self.name = name
         self.path = path
@@ -174,7 +178,9 @@ class Template(object):
                 for p in value:
                     self.parent.append(p.split(" "))
             elif key == 'require':
-                self.components = value
+                self.require = value
+            elif key == 'include':
+                self.include = value
             elif key == 'generate':
                 for g in value:
                     self.generate.append(g.split(" "))
