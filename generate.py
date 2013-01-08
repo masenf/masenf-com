@@ -90,7 +90,6 @@ class SiteData(object):
                     content_type = g[0]
                     field = g[1]
                     for c in self.content[content_type]:
-                        #fields = self.flatten_metadata(c.metadata)
                         fields = c.metadata.copy()
                         fields[field] = c.render()
                         raw_output = self.render_template(name, fields)
@@ -207,7 +206,7 @@ class Template(object):
     def _build_replacements(self):
         self.replacements = Template.repl_re.findall(self.content)
 class Content(object):
-    """the template class stores dependencies for rendering a template"""
+    """the content class stores dependencies for rendering article/comment content"""
     def __init__(self, name, ctype, metadata, content):
         name,ext = name.split('.')
         self.name = name
