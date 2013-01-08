@@ -1,5 +1,6 @@
 # generate.py -- assemble the pieces
 import os
+import sys
 import shutil
 import time
 from docutils.core import publish_parts
@@ -22,29 +23,43 @@ def flatten_list(l):
     else:
         return map(flatten_list, l)
 
+class Log(object):
+    def __init__(self, output=sys.stdout):
+        self.output = output
+        self.indent = "  "
+    def log(self, tag, message, level=1):
+        indent = self.indent * (level - 1)
+        self.output.write("{}[{}] {}\n".format(indent, tag, message))
 class SiteData(object):
     def __init__(self):
         self.content = {}
         self.templates = {}
         self.components = {}
         self.output_dir = "output"
+        self.log = Log().log
+        self.level =  0  # render template recursion level
     def ensure_dir(self, f):
         d = os.path.dirname(f)
         if not os.path.exists(d):
             os.makedirs(d)
     def render_template(self, tmpl_name, fields):
-        print("[SiteData] render_template - {}".format(tmpl_name))
+        self.level += 1
+        self.log("SiteData", "render_template - {}".format(tmpl_name), self.level)
         t = self.templates[tmpl_name]
         repl = {}
         for r in t.replacements:
             if r in t.require:
-                print("[render_template] render req'd component: {}".format(t.require[r]))
+                self.log("render_template", "render req'd component: {}".format(t.require[r]), self.level)
+                self.level += 1
                 repl[r] = self.components[t.require[r]].render(tmpl_name=tmpl_name, fields=fields)
+                self.level -= 1
             elif r in fields:                 # allow fields to override components
                 repl[r] = fields[r]
             elif r in t.include:
-                print("[render_template] render include'd component: {}".format(t.include[r]))
+                self.log("render_template", "render included'd component: {}".format(t.include[r]), self.level)
+                self.level += 1
                 repl[r] = self.components[t.include[r]].render(tmpl_name=tmpl_name, fields=fields)
+                self.level -= 1
             else:
                 repl[r] = ""
         for p in t.parent:  # process parent template
@@ -55,14 +70,18 @@ class SiteData(object):
             p_repl.update(fields)
             p_repl.update(repl)
             p_repl[p_field] = t.content.format(**repl)
-            return self.render_template(p_tmpl, p_repl)
+            output = self.render_template(p_tmpl, p_repl)
+            self.level -= 1
+            return output
+        self.level -= 1
         return t.content.format(**repl)
     def write_file(self, filepath, content):
-        print("[SiteData] Writing output to {}".format(filepath))
+        self.log("SiteData" ,"Writing output to {}".format(filepath), self.level)
         self.ensure_dir(filepath)
         with open(filepath, 'w') as f:
             f.write(content)
     def build(self):
+        self.log("SiteDate", "Starting full site build...", self.level)
         output_dir = "output"
         # build out templates
         for name,t in self.templates.iteritems():
@@ -81,6 +100,7 @@ class SiteData(object):
                 fname = name.split('.')[0] + ".html"
                 filepath = os.path.join(output_dir, fname)
                 self.write_file(filepath, self.render_template(name, {}))
+        self.log("SiteDate", "Site build complete.", self.level)
 
 class Scanner(object):
     TEMPLATE_DIR = "template"

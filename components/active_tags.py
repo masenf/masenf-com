@@ -11,7 +11,7 @@ class Active_tags(Component):
     def __init__(self, *args, **kwds):
         Component.__init__(self, *args, **kwds)
 
-        print("[Active_tag] initializing component")
+        self.log("Active_tag", "initializing component", self.data.level)
 
         # Set up data structures
         self.tags = {}
@@ -20,7 +20,7 @@ class Active_tags(Component):
 
     def scan_tags(self):
         """ scan through all Content objects, collecting tags """
-        print("[Active_tag] building tag database")
+        self.log("Active_tag" ,"building tag database", self.data.level)
         for c in self.data.content['blog']:
             if "tag" not in c.metadata:
                 continue
@@ -30,7 +30,7 @@ class Active_tags(Component):
                     self.tags[t] = []
                 self.tags[t].append(c)
     def create_tag_page(self, tag):
-        print("[Active_tag] Generating tag page for {}".format(tag))
+        self.log("Active_tag", "Generating tag page for {}".format(tag), self.data.level)
         a = Tag_page(self.data)
         a.content = sorted(self.tags[tag],key=lambda c: c.published,reverse=True)
         fields = {}
@@ -49,7 +49,7 @@ class Active_tags(Component):
     def render(self, tmpl_name=None, fields=None, **kwds):
         # if this is the first time rendering, gen tag pages
         if not self.generated:
-            print("[Active_tag] creating tag listing pages")
+            self.log("Active_tag", "creating tag listing pages", self.data.level)
             self.generated = True
             # Generate tag page listings
             for tag in self.tags:

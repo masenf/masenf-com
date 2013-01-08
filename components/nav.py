@@ -9,7 +9,7 @@ class Archive(Posts):
         return self.content
 class Nav(Component):
     def generate_archive(self, ym, content):
-        print("    [Nav] Generate archive listing for {} ({})".format(ym, len(content)))
+        self.log("Nav", "Generate archive listing for {} ({})".format(ym, len(content)), self.data.level)
         a = Archive(self.data)
         a.content = sorted(content,key=lambda c: c.published,reverse=True)
         fields = {}
