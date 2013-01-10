@@ -22,6 +22,27 @@ def flatten_list(l):
         return flatten_list(l[0])
     else:
         return map(flatten_list, l)
+def get_name_and_ext(filename, num_ext=1):
+    """ return the prefix and extension of filename
+        as a tuple.
+
+        num_ext is the number of file extensions to strip
+
+        >>> get_name_and_ext("arch.tar.gz", 1)
+        ("arch.tar","gz")
+        >>> get_name_and_ext("arch.tar.gz", 2)
+        ("arch","tar.gz")
+    """ 
+    delim = "."
+    chunks = filename.split(delim)
+    if len(chunks) > num_ext:
+        name = chunks[:-num_ext]
+        ext  = chunks[-num_ext:]
+    else:
+        name = chunks
+        ext  = []
+    # put the dots back in:
+    return tuple(map(lambda x: delim.join(x), (name,ext)))
 
 class Log(object):
     def __init__(self, output=sys.stdout):
@@ -96,8 +117,8 @@ class SiteData(object):
                         filepath = os.path.join(output_dir, content_type, c.name) + ".html"
                         self.write_file(filepath, raw_output)
             else:
-                fname = name.split('.')[0] + ".html"
-                filepath = os.path.join(output_dir, fname)
+                fname, ext = get_name_and_ext(name,2)
+                filepath = os.path.join(output_dir, fname + ".html")
                 self.write_file(filepath, self.render_template(name, {}))
         self.log("SiteDate", "Site build complete.", self.level)
 
@@ -208,9 +229,7 @@ class Template(object):
 class Content(object):
     """the content class stores dependencies for rendering article/comment content"""
     def __init__(self, name, ctype, metadata, content):
-        name,ext = name.split('.')
-        self.name = name
-        self.ext = ext      # the original file extension
+        self.name,self.ext = get_name_and_ext(name)
         self.ctype = ctype  # the content type (i.e. folder it's in)
         self.metadata = metadata
         self.content = content
