@@ -3,6 +3,7 @@
 :published 1357755828
 :modified 1357755828
 :tag philosophy
+:slug time-travel-is-weird
 
     "Time travel is weird"
     - *Samantha Warring*
