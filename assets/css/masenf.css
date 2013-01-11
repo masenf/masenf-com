@@ -5,6 +5,9 @@ body {
     padding-bottom: 40px;
     background-color: #ddd;
 }
+blockquote p {
+    margin-bottom: 1em;
+}
 .white_rounded {
    background-color: #fff; 
     -moz-border-radius: 7px;
@@ -30,6 +33,9 @@ body {
 .float-right {
     float: right;
     padding: 15px;
+}
+.clear {
+    clear: both;
 }
 .inline {
     display: inline;
