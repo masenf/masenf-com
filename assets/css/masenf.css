@@ -28,11 +28,13 @@ blockquote p {
 }
 .float-left {
     float: left;
-    padding: 15px;
+    padding-left: 15px;
+    padding-right: 15px;
 }
 .float-right {
     float: right;
-    padding: 15px;
+    padding-left: 15px;
+    padding-right: 15px;
 }
 .clear {
     clear: both;
