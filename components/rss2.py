@@ -17,7 +17,7 @@ class Rss2(Component):
         self.PREVIEW_CHARS = 256
         self.output_rss(self.rssfile)
     def output_rss(self, filename):
-        self.log("Generating RSS2 feed for site at {}".format(self.rssfile), self.data.level)
+        self.log("Rss2","Generating RSS2 feed for site at {}".format(self.rssfile), self.data.level)
         import PyRSS2Gen as rss2
         import htmltruncate
         import datetime
@@ -27,7 +27,7 @@ class Rss2(Component):
             try:
                 description = htmltruncate.truncate(c.render(),self.PREVIEW_CHARS,"...")
             except htmltruncate.UnbalancedError:
-                self.log("Posts", "Error truncating {}, ensure proper document structure".format(post.name), self.data.level)
+                self.log("Rss2", "Error truncating {}, ensure proper document structure".format(post.name), self.data.level)
                 raise
             link = self.siteroot + c.metadata['link']
             items.append(rss2.RSSItem(
