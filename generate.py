@@ -255,6 +255,9 @@ class Content(object):
         if "slug" not in self.metadata:
             self.metadata["slug"] = self.slugify(self.name)
         self.name = self.metadata["slug"]
+
+        # set the link structure for this content
+        self.metadata['link'] = "/{}/{}.html".format(self.ctype,self.name)
     def slugify(self, name):                                                                      
         slug = []
         a = ord('a')

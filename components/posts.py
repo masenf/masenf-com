@@ -20,7 +20,6 @@ class Posts(Component):
             loc_content = self.get_content()
             for post in loc_content:
                 fields = post.metadata
-                fields['link'] = "/{}/{}.html".format(post.ctype,post.name)
                 try:
                     fields['body'] = htmltruncate.truncate(post.render(),self.PREVIEW_CHARS,"...")
                 except htmltruncate.UnbalancedError:

@@ -1,5 +1,6 @@
 <!--
 :require sitemap sitemap
+:require rss2 rss
 :generate page content
 -->
 <!DOCTYPE html>
@@ -8,12 +9,11 @@
     <meta charset="utf-8">
     <title>_masenf.com > {title}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
+    <meta name="description" content="Personal website featuring projects, stories, and posts about life and programming">
     <meta name="author" content="Masen Furer">
 
     <!-- Le styles -->
     <link href="/css/bootstrap.css" rel="stylesheet">
-    </style>
     <link href="/css/bootstrap-responsive.css" rel="stylesheet">
     <link href="/css/bootstrap-wysihtml5.css" rel="stylesheet">
     <link href="/css/masenf.css" rel="stylesheet">
@@ -30,7 +30,7 @@
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/ico/apple-touch-icon-72-precomposed.png">
     <link rel="apple-touch-icon-precomposed" href="/ico/apple-touch-icon-57-precomposed.png">
 
-    <link rel=”alternate” type=”application/rss+xml” title=”masenf.com_blog” href=”/blog/rss2” />
+    {rss}
   </head>
 
   <body>
