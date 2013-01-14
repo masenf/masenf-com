@@ -10,7 +10,7 @@ class Rss2(Component):
         Component.__init__(self, *args, **kwds)
 
         self.siteroot = "http://masenf.com"
-        self.rsstitle = "masenf.com > blog"
+        self.rsstitle = "masenf.com &gt; blog"
         self.rssfile = "output/feed.rss"
         self.rsspath = "/feed.rss"
         self.NUM_POSTS = 20
