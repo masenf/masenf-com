@@ -3,7 +3,7 @@
 :published 1357873401
 :modified 1348172960
 :modified 1357873401
-:permalink 20
+:permalink blog/20/?
 :slug we-are-power
 :tag philosophy
 

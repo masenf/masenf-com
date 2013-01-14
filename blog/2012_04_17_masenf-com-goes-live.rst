@@ -2,7 +2,7 @@
 :title masenf.com goes live
 :published 1334693015
 :modified 1357844321
-:permalink 8
+:rewrite blog/8/?
 :slug masenf-com-goes-live
 :tag technical
 :tag site

@@ -2,7 +2,7 @@
 :title wikiAnswers
 :published 1339193087
 :modified 1339193087
-:permalink 12
+:rewrite blog/12/?
 :slug wikianswers
 :tag rant
 

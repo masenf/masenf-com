@@ -3,7 +3,7 @@
 :published 1357803009
 :modified 1341293302
 :modified 1357803009
-:permalink 15
+:rewrite blog/15/?
 :tag technical
 :tag lengthy
 :slug down-the-puppet-hole
