@@ -5,6 +5,10 @@
 :slug questionable-sni-support
 :tag technical
 
+.. figure:: /img/blog/ie8_logo.jpg
+   :alt: ie8 logo
+   :figclass: float-right
+
 Background
 ==========
 
