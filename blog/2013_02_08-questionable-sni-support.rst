@@ -5,12 +5,12 @@
 :slug questionable-sni-support
 :tag technical
 
-.. figure:: /img/blog/ie8_logo.jpg
-   :alt: ie8 logo
-   :figclass: float-right
-
 Background
 ==========
+
+.. figure:: /img/blog/ie8_logo.jpg
+   :alt: ie8 logo
+   :figclass: float-left
 
 In my current job, I tend to take on the maintenence responsibility for a large
 obsolete code base which is still being used, but doesn't currently have active
