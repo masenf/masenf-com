@@ -2,11 +2,11 @@
 :author masen
 :published 1360354908
 :modified 1360354908
+:modified 1360383285
 :slug questionable-sni-support
 :tag technical
 
-Background
-==========
+**Background**
 
 .. figure:: /img/blog/ie8_logo.jpg
    :alt: ie8 logo
@@ -16,12 +16,11 @@ In my current job, I tend to take on the maintenence responsibility for a large
 obsolete code base which is still being used, but doesn't currently have active
 maintainers on staff. It's usually low impact work, a few bug fixes here and
 there, and people stay happy. The software in question is a PHP survey app, which is
-still is frequent use my various departments at the University. It's one of 
+still in frequent use by various departments at the University. It's one of 
 those pieces of software that other folks would consider to be a lot more important
 that we do. So naturally, when it doesn't work we hear about it.
 
-The Issue
-=========
+**The Issue**
 
 This week we heard about a new issue, a Security Error relating to our certificate.
 Previously we had encountered mixed content issues where users would include external
@@ -37,18 +36,19 @@ a cert for a *different* domain!
 
 In December we deployed two redundant reverse
 proxy servers which handled proper forwarding to our backend servers, we also
-offloaded SSL processing to these proxies. Because our public IP options were limited
+offloaded SSL processing to these proxies. Because our public IP options were limited,
 this move also meant swallowing the SNI pill and going to Named SSL Virtual Hosts
 on nginx. Our testing showed us that this was not an issue, however our testing 
 was mainly limited to Firefox and Chrome, not everyone's favorite browser, IE.
 
-It's been published that all modern browsers come with SNI support, however the 
+It's `been published`_ that all modern browsers come with SNI support, however the 
 compatability of IE8's implementation is a bit questionable, while the proper 
 page for the requested vhost was returned, the server didn't know which cert
 to send back to the client, hence the domain mismatch error.
 
-The Solution
-============
+.. _`been published`: https://sni.velox.ch/
+
+**The Solution**
 
 Since WWU uses a wildcard certificate, we decided to use Subject Alternate names 
 to our advantage. We minted a *proxy* cert which includes the names of the SSL hosts
@@ -66,8 +66,7 @@ box. After a few snags, we were able to test the configuration and confirm that
 with the multi-name wildcard cert (*consolicert*), SNI behavior was working
 as expected in IE8 and presumably later versions of IE!
 
-Side note about HOSTS and Internet Explorer
-===========================================
+**Side note about HOSTS and Internet Explorer**
 
 In the process of testing the solution on the staging server, I needed to add a
 HOSTS entry to the XP system to point our problem domain to the staging IP.
