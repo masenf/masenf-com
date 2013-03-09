@@ -3,53 +3,172 @@
 :title projects
 :published 1332714156
 :modified 1349298247
-:rewrite blog/3/? projects/?
+:rewrite blog/3/ projects/
 :slug projects
 -->
 
 <h1>projects</h1>
 <div class="row" style="">
-<div class="span4" style="">
-<h2>school</h2>
-<div class="white_rounded" style="">
-<h3>Graphdroid 2012&nbsp;<a href="https://github.com/masenf/GraphDroid2012" rel="nofollow" target="_blank"><span class="label label-info pointer">github</span></a></h3>
+    <div class="span4" style="">
+        <h2>school</h2>
+        <div class="white_rounded" style="">
+            <h3>Graphdroid 2012 
+                <a href="https://github.com/masenf/GraphDroid2012" rel="nofollow" target="_blank">
+                    <span class="label label-info pointer">github</span>
+                </a>
+            </h3>
 
-<img class="float-left" src="/img/small_android.png" alt="" height="59" width="50"><p style="" align="">This is a project to bring a fully featured computer algebra system with graphing capability to android phones and tablets. I'm working on this project with Nam Ngo. Currently in its early stages, we aim to have a presentation and public demo available by May 2012.</p><p style="" align="">For CAS, we're using&nbsp;<a href="http://code.google.com/p/symja/" rel="nofollow" target="_blank">symja</a>, which already has an 'expression evaluator' for Android devices. What we seek to replicate is the sort of all-in-one educational ubiquity enjoyed by the likes of TI</p>
-</div>
-<h2>work</h2>
-<div class="white_rounded" style="">
-<h3>Redundant DHCP</h3>
-<img class="float-right" src="/img/dhcp_square.png" alt="">
-<p style="" align="">My next project at work is implementing redundant DHCP servers. Since I started working for University Residences in 2009, this has been a TODO list item. Now that we've got brand new servers to take care of web proxy. Our older servers can be made to do not just failover, but load balanced DHCP. I'll be using isc-dhcp41-server v4.1-ESV-R4 which includes plenty of new features for making peer'd DHCP less of a nightmare.</p>
-</div>
-<div class="white_rounded" style="">
-<h3>Deploy PostgreSQL Database Server</h3>
-<p style="" align="">This summer ResTek will be transitioning from a MySQL instance running in a VMWare ESX cluster to a brand-new&nbsp;<a href="http://h18004.www1.hp.com/products/quickspecs/14212_div/14212_div.HTML" rel="nofollow" target="_blank">HP Proliant DL380p Gen8</a>&nbsp;sporting 16GB of RAM, 2x72GB 15K disks + 6x300GB 10K disks, and Quad-core Xeon E5-2609 processor. We'll be running FreeBSD 9.0 with dedicated (UFS) slices for OS, postgres data, wal archives, indexes, and mysql data.</p><p style="" align="">As of August 2012, the new Database server is online and keeping data. A successful transition for all apps will be made throughout the academic year 2012-2013</p></div>
-</div>
-<div class="span4" style="">
-<h2>play</h2>
-<div class="white_rounded" style="">
-<div class="white_rounded" style="">
-<h3>Faed - Finite Automata Editor&nbsp;<a href="https://github.com/masenf/faed" rel="nofollow" target="_blank"><span class="label label-info pointer">github</span></a></h3>
+            <img class="float-left" src="/img/small_android.png" alt="" height="59" width="50">
+            <p>This is a project to bring a fully featured computer algebra
+            system with graphing capability to android phones and tablets. I'm
+            working on this project with Nam Ngo. Currently in its early stages,
+            we aim to have a presentation and public demo available by May
+            2012.</p>
+            
+            <p>For CAS, we're using 
+            <a href="http://code.google.com/p/symja/" rel="nofollow" target="_blank">symja</a>, 
+            which already has an 'expression evaluator' for Android devices.
+            What we seek to replicate is the sort of all-in-one educational
+            ubiquity enjoyed by the likes of TI</p>
+        </div>
+        <h2>work</h2>
+        <div class="white_rounded">
+            <h3>FreeBSD Oracle Compatibility</h3>
+            <img class="float-right" src="/img/freebsd_daemon.jpg" alt="FreeBSD
+            Demon" height="60" width="55" />
 
-<img class="float-left" src="/img/faed_small.png" alt="" height="50" width="60"><p style="" align="">I began working on my finite automata editor after my first week of CSCI 401 - Formal Languages and Automata. I found the subject to be initially interesting and modeling to be extremely helpful in understanding what was going on. My inspiration for using HTML5/Javascript was to enable maximum portability. The end goal is to support Desktop, Android, and iOS platforms.</p>
-<p style="" align="">The editor allows on the fly creation of deterministic and non-deterministic finite automata. After building test strings can be executed against the machine to test for acceptance or rejection. While still a work in progress, eventually users will be able to save machines as JSON or PNG and convert machines to regular expressions and vice versa. Any feature suggestions are welcome. Once I finish the 0.1 release, I will host a live demo of the app on this site.</p>
-</div>
-<div class="white_rounded" style="">
-<h3>Redesign masenf.com</h3>
-<p style="" align="">After redesigning this site in March 2012, I've decided that I don't like the editing interface. In my spare time, I'm moving the site to a reStructuredText/git/vim/python backend in an attempt to free my content from the clutches of strange file formats and markup! The visual look of the page should not be changing too much.</p>
+            <p>Since the release of FreeBSD 9.0, the standard FreeBSD compiler
+            no longer supports linking to Linux libraries via use of the
+            Linuxulator. Previously we had made use of the built in linux binary
+            compatibility in order to build and run cx_Oracle on our FreeBSD
+            servers to talk to the campus database.</p>
 
-</div></div>
-<div class="span4" style="">
-<div class="white_rounded" style="">
-<h3>Hallusinaattori Remix <a href="http://masenf.com/hallusinaattori-js/hallusinaattori.html" rel="nofollow" target="_blank"><span class="pointer label label-warning">demo</span></a> <a href="http://github.com/masenf/hallusinaattori-js" rel="nofollow" target="_blank"><span class="pointer label label-info">github</span></a></h3>
-<img class="float-left" src="/img/hallusinaattori.jpg" alt=""><p style="" align="">I've become recently interested in externally induced visual field distortion. I've dug up some old code called Hallusinaattori which creates many moving concentric circles on the screen. Extended viewing of these images will trick the brain into compensating for the rapidly moving shapes. Looking away from the image leaves the compensation in place, causing a change in your visual field</p>
-<p style="" align="">I'll be porting the original code from C to HTML5/JS so you'll be able to experience the effects first hand in your browser! An initial version is available at the demo link above. Click for customization options. Send any suggestions or patches via github.<br></p>
-</div>
-<div class="white_rounded" style="">
-<h3>PyMP <span class="label">coming soon</span></h3>
-<p style="" align="">PyMP is an online music player which streams your own music library over LAN or WAN direct to browsers and mobile devices. The project began in CSCI 330 Databases (Fall '11) with Python, JQuery, and PostgreSQL, and has since been tabled for the past year.</p>
+            <p>I've tried a few different solutions and have found one which
+            works, but is definitely not clean. So the options are: continue
+            with the unclean solution, and be able upgrade to 9.1 (and begin
+            using amd64 kernel). Or stick with 8.2 until someone fixes linux
+            library linking support. I definitely don't have the time or
+            technical knowledge to contribute the fix personally. In fact I
+            barely have the time to write up my workaround, though I hope to do
+            so by April 2013, stay tuned</p>
+        </div>
+        <div class="white_rounded">
+            <h3>Redundant DHCP</h3>
+            <img class="float-right" src="/img/dhcp_square.png" alt="">
+            <p>My next project at work is implementing redundant DHCP servers.
+            Since I started working for University Residences in 2009, this has
+            been a TODO list item. Now that we've got brand new servers to take
+            care of web proxy. Our older servers can be made to do not just
+            failover, but load balanced DHCP. I'll be using isc-dhcp41-server
+            v4.1-ESV-R4 which includes plenty of new features for making peer'd
+            DHCP less of a nightmare.</p>
+        </div>
 
-<p style="" align="">In my 'free time' this year I plan to polish it, move to bootstrap/backbone on the client, rewrite the server in C, and release it to the public. We'll see if I can make it happen, watch on github or if you're feeling ambitious, help me out! I'm still looking for a new name as well.</p>
+        <div class="white_rounded" style="">
+            <h3>Deploy PostgreSQL Database Server</h3>
+            <p>This summer ResTek will be transitioning from a MySQL instance
+            running in a VMWare ESX cluster to a brand-new
+            <a href="http://h18004.www1.hp.com/products/quickspecs/14212_div/14212_div.HTML"
+            rel="nofollow" target="_blank">HP Proliant DL380p Gen8</a>
+            sporting 16GB of RAM, 2x72GB 15K disks + 6x300GB 10K disks, and
+            Quad-core Xeon E5-2609 processor. We'll be running FreeBSD 9.0 with
+            dedicated (UFS) slices for OS, postgres data, wal archives, indexes,
+            and mysql data.</p>
+            
+            <p>As of August 2012, the new Database server is online and keeping
+            data. A successful transition for all apps will be made throughout
+            the academic year 2012-2013</p></div>
+        </div>
+    </div>
+    <div class="span4">
+        <h2>play</h2>
+        <div class="white_rounded" style="">
+            <h3>Faed - Finite Automata Editor
+                <a href="https://github.com/masenf/faed" rel="nofollow" target="_blank">
+                    <span class="label label-info pointer">github</span>
+                </a>
+            </h3>
+            <img class="float-left" src="/img/faed_small.png" alt="" height="50" width="60"><p style="" align="">
+            <p>I began working on my finite automata editor after my first week
+            of CSCI 401 - Formal Languages and Automata. I found the subject to
+            be initially interesting and modeling to be extremely helpful in
+            understanding what was going on. My inspiration for using
+            HTML5/Javascript was to enable maximum portability. The end goal is
+            to support Desktop, Android, and iOS platforms.</p>
+
+            <p>The editor allows on the fly creation of deterministic and
+            non-deterministic finite automata. After building test strings can
+            be executed against the machine to test for acceptance or rejection.
+            While still a work in progress, eventually users will be able to
+            save machines as JSON or PNG and convert machines to regular
+            expressions and vice versa. Any feature suggestions are welcome.
+            Once I finish the 0.1 release, I will host a live demo of the app on
+            this site.</p>
+        </div>
+        <div class="white_rounded">
+            <h3>Hallusinaattori Remix 
+                <a href="http://masenf.com/hallusinaattori-js/hallusinaattori.html">
+                    <span class="pointer label label-warning">demo</span>
+                </a> 
+                <a href="http://github.com/masenf/hallusinaattori-js" rel="nofollow" target="_blank">
+                    <span class="pointer label label-info">github</span>
+                </a>
+            </h3>
+            <img class="float-left" src="/img/hallusinaattori.jpg" alt="hallusinaattori screenshot">
+            <p>I've become recently interested in externally induced visual
+            field distortion. I've dug up some old code called Hallusinaattori
+            which creates many moving concentric circles on the screen. Extended
+            viewing of these images will trick the brain into compensating for
+            the rapidly moving shapes. Looking away from the image leaves the
+            compensation in place, causing a change in your visual field</p>
+
+            <p>I'll be porting the original code from C to HTML5/JS so you'll be
+            able to experience the effects first hand in your browser! An
+            initial version is available at the demo link above. Click for
+            customization options. Send any suggestions or patches via
+            github.<br></p>
+        </div>
+    </div>
+    <div class="span4" style="">
+        <div class="white_rounded">
+            <h3>WTA Next Bus
+                <a href="http://github.com/masenf/wta-next-bus" rel="nofollow" target="_blank">
+                    <span class="pointer label label-info">github</span>
+                </a>
+            </h3>
+            <p>WTA Next Bus is an android application (or rather a framework) to
+            simply display bus arrival times at a selected bus stop. I was
+            inspired to write it after attempting to use Bellingham WTA's online
+            service for displaying bus times -- it's virtually unusable on a phone
+            and not very friendly. Currently the app displays a list of
+            available bus stops (sorted by category or location) and provides a
+            search and favorites feature. Other than that it shows the next 5
+            busses arriving at a selected stop.</p>
+
+            <p>The software has been written generally such that it could be
+            easily adapted to service any bus line. Right now I run a python
+            server which proxies requests from the app to the actual web service
+            run by WTA. Because of this decoupling, the python app could serve
+            static data or source its data from anywhere else. Eventually I'd
+            like to add mapping support and better internal application
+            caching.</p>
+
+            <p>When I feel the application is a little more stable, I'll release
+            an alpha APK here for testing. Otherwise, the code is available on
+            github and builds just fine for API level &gt; 11</p>
+        </div>
+        <div class="white_rounded" style="">
+            <h3>PyMP <span class="label">coming soon</span></h3>
+            <p>PyMP is an online music player which streams your own music
+            library over LAN or WAN direct to browsers and mobile devices. The
+            project began in CSCI 330 Databases (Fall '11) with Python, JQuery,
+            and PostgreSQL, and has since been tabled for the past year.</p>
+
+            <p>In my 'free time' this year I plan to polish it, move to
+            bootstrap/backbone on the client, rewrite the server in C, and
+            release it to the public. We'll see if I can make it happen, watch
+            on github or if you're feeling ambitious, help me out! I'm still
+            looking for a new name as well.</p>
+        </div>
+    </div>
 </div>
-</div></div>
