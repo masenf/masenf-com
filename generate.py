@@ -3,6 +3,7 @@ import os
 import sys
 import shutil
 import time
+import components.youtube
 from docutils.core import publish_parts
 
 def test():
