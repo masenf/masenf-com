@@ -1,7 +1,7 @@
 from components import Component
 from components.posts import Posts
 import time
-import os
+import os,sys
 
 # set up blog archives
 class Archive(Posts):
@@ -21,6 +21,30 @@ class Nav(Component):
         filepath = os.path.join(self.data.output_dir, relpath)
         self.data.write_file(filepath, output)
         return relpath
+    def similar_posts(self, slug, tag):
+        # get all tags from active_tag database
+        atags = self.data.components['active_tags'].tags
+        out = "<li class=\"nav-header\">Related Posts</li>\n"
+        similars = { }
+        simcounts = { }
+        tags = tag.split(" ")
+        for tag in tags:
+            if tag in atags:
+                for c in atags[tag]:
+                    if c.name != slug:
+                        if c.name not in similars:
+                            similars[c.name] = c
+                            simcounts[c.name] = 0
+                        simcounts[c.name] += 1
+        ranking = list(simcounts.items())
+        ranking.sort(key=lambda x: x[1], reverse=True)
+        for similarslug in ranking[0:5]:
+            md = similars[similarslug[0]].metadata
+            out += "<li><a href=\"{}\">{}</a></li>\n".format(md['link'],md['title'])
+        if similars:
+            return out
+        else:
+            return ""       # if there are no other posts, show nothing
     def render(self, active=None, tmpl_name=None, fields=None):
         if not hasattr(self, "order"):
             self.archive_months = {}
@@ -37,6 +61,8 @@ class Nav(Component):
         else:
             act = ""
         rendered = "<li{}><a href=\"/blog.html\">latest posts</a></li>\n".format(act)
+        if fields is not None and "tag" in fields:
+            rendered += self.similar_posts(fields['slug'], fields['tag'])
         rendered += "<li class=\"nav-header\">archives</li>\n"
         for ym in self.order:
             if ym == active:
