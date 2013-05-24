@@ -7,7 +7,7 @@
 :slug we-are-power
 :tag philosophy
 
-.. figure:: /img/blog/mall-crowd-Sai89AJ.jpg
+.. figure:: /img/blog/mall-crowd-Sai89AJ2.jpg
    :width: 500px
    :height: 283px
    :scale: 75 %
