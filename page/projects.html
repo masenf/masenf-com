@@ -11,7 +11,6 @@
 <h1>projects</h1>
 <div class="row" style="">
     <div class="span4" style="">
-        <h2>school</h2>
         <div class="white_rounded" style="">
             <h3>Graphdroid 2012 
                 <a href="https://github.com/masenf/GraphDroid2012" rel="nofollow" target="_blank">
@@ -23,8 +22,7 @@
             <p>This is a project to bring a fully featured computer algebra
             system with graphing capability to android phones and tablets. I'm
             working on this project with Nam Ngo. Currently in its early stages,
-            we aim to have a presentation and public demo available by May
-            2012.</p>
+            <b>development is currently halted</b>.</p>
             
             <p>For CAS, we're using 
             <a href="http://code.google.com/p/symja/" rel="nofollow" target="_blank">symja</a>, 
@@ -32,57 +30,43 @@
             What we seek to replicate is the sort of all-in-one educational
             ubiquity enjoyed by the likes of TI</p>
         </div>
-        <h2>work</h2>
         <div class="white_rounded">
-            <h3>FreeBSD Oracle Compatibility</h3>
-            <img class="float-right" src="/img/freebsd_daemon.jpg" alt="FreeBSD
-            Demon" height="58" width="55" />
+            <h3>jSnakeByte
+                <a href="https://github.com/masenf/jsnakebyte" rel="nofollow" target="_blank">
+                    <span class="label label-info pointer">github</span>
+                </a>
+            </h3>
+            <img class="float-right" src="/img/jsnakebyte.png" alt="Screenshot" 
+            height="125" width="95" />
 
-            <p>Since the release of FreeBSD 9.0, the standard FreeBSD compiler
-            no longer supports linking to Linux libraries via use of the
-            Linuxulator. Previously we had made use of the built in linux binary
-            compatibility in order to build and run cx_Oracle on our FreeBSD
-            servers to talk to the campus database.</p>
+            <p>This is a throwback of probably my favorite game growing up, snakebyte.
+            Although the concept has been done many times over the years, this
+            implementation is aiming to be a ripoff of SnakeByte for Apple //e
+            written by Sirius Software around the early 80s.</p>
 
-            <p>I've tried a few different solutions and have found one which
-            works, but is definitely not clean. So the options are: continue
-            with the unclean solution, and be able upgrade to 9.1 (and begin
-            using amd64 kernel). Or stick with 8.2 until someone fixes linux
-            library linking support. I definitely don't have the time or
-            technical knowledge to contribute the fix personally. In fact I
-            barely have the time to write up my workaround, though I hope to do
-            so by April 2013, stay tuned</p>
+            <p>I started working on the game sometime in late 2011, and then 
+            stagnated for over a year before moving the code to github in February 2013.
+            Currently a few levels are done and the engine is playable. Work still
+            needs to be done to enable multires support and mobile controls.</o>
         </div>
         <div class="white_rounded">
-            <h3>Redundant DHCP</h3>
-            <img class="float-right" src="/img/dhcp_square.png" alt="">
-            <p>My next project at work is implementing redundant DHCP servers.
-            Since I started working for University Residences in 2009, this has
-            been a TODO list item. Now that we've got brand new servers to take
-            care of web proxy. Our older servers can be made to do not just
-            failover, but load balanced DHCP. I'll be using isc-dhcp41-server
-            v4.1-ESV-R4 which includes plenty of new features for making peer'd
-            DHCP less of a nightmare.</p>
-        </div>
+            <h3>adgroupcacher
+                <a href="https://github.com/masenf/adgroupcacher" rel="nofollow" target="_blank">
+                    <span class="label label-info pointer">github</span>
+                </a>
+            </h3>
 
-        <div class="white_rounded" style="">
-            <h3>Deploy PostgreSQL Database Server</h3>
-            <p>This summer ResTek will be transitioning from a MySQL instance
-            running in a VMWare ESX cluster to a brand-new
-            <a href="http://h18004.www1.hp.com/products/quickspecs/14212_div/14212_div.HTML"
-            rel="nofollow" target="_blank">HP Proliant DL380p Gen8</a>
-            sporting 16GB of RAM, 2x72GB 15K disks + 6x300GB 10K disks, and
-            Quad-core Xeon E5-2609 processor. We'll be running FreeBSD 9.0 with
-            dedicated (UFS) slices for OS, postgres data, wal archives, indexes,
-            and mysql data.</p>
-            
-            <p>As of August 2012, the new Database server is online and keeping
-            data. A successful transition for all apps will be made throughout
-            the academic year 2012-2013</p>
+            <p>A dokuwiki plugin to make dealing with AD groups significantly 
+            less painful. It hasn't been widely tested or published, but it 
+            aims to solve the problem of slow access to Active Directory making
+            using AD groups via the official dokuwiki AD mechanism unusable.</p>
+
+            <p>At ResTek, it enabled us to use CAS to authenticate to the wiki,
+            but still retain our fine-grained hierarchy of groups. Read the 
+            README.md on github for more information</a>
         </div>
     </div>
     <div class="span4">
-        <h2>play</h2>
         <div class="white_rounded" style="">
             <h3>Faed - Finite Automata Editor
                 <a href="https://github.com/masenf/faed" rel="nofollow" target="_blank">
@@ -103,8 +87,7 @@
             While still a work in progress, eventually users will be able to
             save machines as JSON or PNG and convert machines to regular
             expressions and vice versa. Any feature suggestions are welcome.
-            Once I finish the 0.1 release, I will host a live demo of the app on
-            this site.</p>
+            </p>
         </div>
         <div class="white_rounded">
             <h3>Hallusinaattori Remix 
@@ -153,10 +136,6 @@
             static data or source its data from anywhere else. Eventually I'd
             like to add mapping support and better internal application
             caching.</p>
-
-            <p>When I feel the application is a little more stable, I'll release
-            an alpha APK here for testing. Otherwise, the code is available on
-            github and builds just fine for API level &gt; 11</p>
         </div>
         <div class="white_rounded" style="">
             <h3>PyMP <span class="label">coming soon</span></h3>
@@ -164,12 +143,6 @@
             library over LAN or WAN direct to browsers and mobile devices. The
             project began in CSCI 330 Databases (Fall '11) with Python, JQuery,
             and PostgreSQL, and has since been tabled for the past year.</p>
-
-            <p>In my 'free time' this year I plan to polish it, move to
-            bootstrap/backbone on the client, rewrite the server in C, and
-            release it to the public. We'll see if I can make it happen, watch
-            on github or if you're feeling ambitious, help me out! I'm still
-            looking for a new name as well.</p>
         </div>
     </div>
 </div>
