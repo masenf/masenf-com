@@ -5,6 +5,7 @@
 :slug virtualbox-crash-selecting-iso
 :tag technical
 :tag short
+:tag fix
 
 Fixed a sweet bug affecting VirtualBox today in a way that I really didn't expect.
 
