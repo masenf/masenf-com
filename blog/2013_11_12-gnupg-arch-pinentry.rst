@@ -1,7 +1,7 @@
 :author masen
 :title gnupg arch pinentry
 :published 1384302267
-:modified 1384300138
+:modified 1428727236
 :slug gnupg-arch-pinentry
 :tag technical
 :tag fix
@@ -15,6 +15,9 @@ but the message isn't much good if I can't read it. Unfortunately, as I receive
 so few of such messages, my setup decays without daily use and becomes broken.
 
 Case in point: Decrypting a message using GnuPG on a headless Arch Linux box:
+
+**Case in point 2 (added 2015-04-10): this just happened again, I should maybe 
+submit a patch?**
 
 * gnupg has a dependency on pinentry_ 
 * the pinentry package in Arch has this `closed bug`_ (closed as 'not a bug',
