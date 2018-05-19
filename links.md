@@ -1,6 +1,6 @@
 ---
-title: Reading List
-subtitle: a list of books I read
+title: Links
+subtitle: ideas worth sharing
 layout: "page"
 icon: fa-book
 order: 3
