@@ -1,0 +1,42 @@
+---
+title: i need a new home
+author: masen
+layout: post
+tags: technical
+redirect_from:
+  - /blog/i-need-a-new-home.html
+  - /blog/17
+---
+
+So, I\'ve been paying about \$5/month to host this site along with
+several other domains for myself and my comrades. Given the price point,
+i feel like I could probably do better than **shared hosting.** While I
+haven\'t had any specific problems, my site (obviously) does not draw
+that much traffic. If any posts or information hosted here or on any of
+my other hosted sites goes viral, it could very easily bring the entire
+server down. Not only would I likely be reprimanded for such an event,
+it\'s worse knowing that potential visitors would get turned away.
+
+So what really set me off on this mindset? Would you want your sites
+running on a server with top(1) stats like this:
+
+    top - 16:47:45 up 33 days, 21:23,  1 user,  load average: 22.58, 20.83, 20.38
+    Tasks: 1459 total,   5 running, 1434 sleeping,   0 stopped,  20 zombie
+    Cpu(s): 25.8%us,  7.8%sy,  1.2%ni, 64.0%id,  1.1%wa,  0.0%hi,  0.1%si,  0.0%st
+    Mem:  32945572k total, 31836616k used,  1108956k free,  1113392k buffers
+    Swap:  8388536k total,  1149512k used,  7239024k free, 18647572k cached
+
+Now I don\'t think that\'s as bad as it initially looks, \"That server
+has 900Mb of free RAM!\" But those load averages really freak me out.
+Sometimes the server load gets to over 25.0. Also, there\'s a lot of
+folks with zombie php5 processes just hanging out (20 right now!).
+
+Recently there was a hardware swap with some downtime when JustHost
+migrated my account to a new server. Unfortunately, instead of upgrading
+the infrastructure, they \"sidegraded\" it. I was moved from a single
+server hosting myself with about 30-40 other accounts to a
+faster consolidated server which AFAIK is serving an upwards of 150
+accounts.
+
+This is just never a place that i\'d want to seriously host anything,
+except for this site. Cheers!
