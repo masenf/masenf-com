@@ -1,0 +1,54 @@
+==================================================================
+https://keybase.io/mjf
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of https://masenf.com
+  * I am mjf (https://keybase.io/mjf) on keybase.
+  * I have a public key ASDCVQEDEpS_sGNzSTyhyPiswuwZVFEwcD3TPsIo68BkQgo
+
+To do so, I am signing this object:
+
+{
+    "body": {
+        "key": {
+            "eldest_kid": "0120c25501031294bfb06373493ca1c8f8acc2ec19545130703dd33ec228ebc064420a",
+            "host": "keybase.io",
+            "kid": "0120c25501031294bfb06373493ca1c8f8acc2ec19545130703dd33ec228ebc064420a",
+            "uid": "05f4846ccf0e686f6c2e340064225119",
+            "username": "mjf"
+        },
+        "service": {
+            "hostname": "masenf.com",
+            "protocol": "https:"
+        },
+        "type": "web_service_binding",
+        "version": 1
+    },
+    "client": {
+        "name": "keybase.io go client",
+        "version": "1.0.17"
+    },
+    "ctime": 1475091856,
+    "expire_in": 504576000,
+    "merkle_root": {
+        "ctime": 1475091834,
+        "hash": "253012c70270074e55dcc2950b07ea274fdbe4f925aa1bfa4bf6b3ec188918ab5a87918e289d833f2fc239d39a7734f167d5f06990fe5a945b00b4dc237f5b68",
+        "seqno": 656810
+    },
+    "prev": "d32612f0b6b4a6962c68c8e362b4cf9315d046ad6fcae8c1e7c5db51c31cd210",
+    "seqno": 10,
+    "tag": "signature"
+}
+
+which yields the signature:
+
+hKRib2R5hqhkZXRhY2hlZMOpaGFzaF90eXBlCqNrZXnEIwEgwlUBAxKUv7Bjc0k8ocj4rMLsGVRRMHA90z7CKOvAZEIKp3BheWxvYWTFAu57ImJvZHkiOnsia2V5Ijp7ImVsZGVzdF9raWQiOiIwMTIwYzI1NTAxMDMxMjk0YmZiMDYzNzM0OTNjYTFjOGY4YWNjMmVjMTk1NDUxMzA3MDNkZDMzZWMyMjhlYmMwNjQ0MjBhIiwiaG9zdCI6ImtleWJhc2UuaW8iLCJraWQiOiIwMTIwYzI1NTAxMDMxMjk0YmZiMDYzNzM0OTNjYTFjOGY4YWNjMmVjMTk1NDUxMzA3MDNkZDMzZWMyMjhlYmMwNjQ0MjBhIiwidWlkIjoiMDVmNDg0NmNjZjBlNjg2ZjZjMmUzNDAwNjQyMjUxMTkiLCJ1c2VybmFtZSI6Im1qZiJ9LCJzZXJ2aWNlIjp7Imhvc3RuYW1lIjoibWFzZW5mLmNvbSIsInByb3RvY29sIjoiaHR0cHM6In0sInR5cGUiOiJ3ZWJfc2VydmljZV9iaW5kaW5nIiwidmVyc2lvbiI6MX0sImNsaWVudCI6eyJuYW1lIjoia2V5YmFzZS5pbyBnbyBjbGllbnQiLCJ2ZXJzaW9uIjoiMS4wLjE3In0sImN0aW1lIjoxNDc1MDkxODU2LCJleHBpcmVfaW4iOjUwNDU3NjAwMCwibWVya2xlX3Jvb3QiOnsiY3RpbWUiOjE0NzUwOTE4MzQsImhhc2giOiIyNTMwMTJjNzAyNzAwNzRlNTVkY2MyOTUwYjA3ZWEyNzRmZGJlNGY5MjVhYTFiZmE0YmY2YjNlYzE4ODkxOGFiNWE4NzkxOGUyODlkODMzZjJmYzIzOWQzOWE3NzM0ZjE2N2Q1ZjA2OTkwZmU1YTk0NWIwMGI0ZGMyMzdmNWI2OCIsInNlcW5vIjo2NTY4MTB9LCJwcmV2IjoiZDMyNjEyZjBiNmI0YTY5NjJjNjhjOGUzNjJiNGNmOTMxNWQwNDZhZDZmY2FlOGMxZTdjNWRiNTFjMzFjZDIxMCIsInNlcW5vIjoxMCwidGFnIjoic2lnbmF0dXJlIn2jc2lnxECcnmC3UbvAowsGE8Vf+nJBIbUcjxfH1KvLyW7XlLvJ/NAWPtkHcSFJfStwMeEVcFmOloFDG3mlVPNJ6mforpgCqHNpZ190eXBlIKRoYXNogqR0eXBlCKV2YWx1ZcQg8yISB2ZpmJpjhRRSqXg8SbEAwOVJa0dOnYoIm2zaUimjdGFnzQICp3ZlcnNpb24B
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/mjf
+
+==================================================================
