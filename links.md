@@ -5,6 +5,14 @@ icon: fa-book
 order: 3
 ---
 
+Decentralization
+------
+
+IPFS
+====
+
+* [Why the Internet Needs IPFS](https://techcrunch.com/2015/10/04/why-the-internet-needs-ipfs-before-its-too-late/)
+* [Tallylab](https://tallylab.com)
 
 Programming
 ------
