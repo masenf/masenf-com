@@ -5,6 +5,12 @@ icon: fa-book
 order: 3
 ---
 
+Interesting Products/Blogs
+------
+
+* [Kollter ES1 Electric Motorcycle](https://electrek.co/2021/10/26/north-americas-most-affordable-70-mph-electric-motorcycle-is-already-here-and-no-one-noticed/)
+
+
 Decentralization
 ------
 
