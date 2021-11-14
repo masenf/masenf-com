@@ -1,5 +1,5 @@
 ---
-title: docker: ubuntu focal update fail
+title: docker ubuntu focal apt-get issue
 author: masen
 layout: post
 tags: technology
