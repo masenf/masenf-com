@@ -32,6 +32,6 @@ Python
 Open Source
 ===========
 
-<iframe src="https://github-stats-widget.reflex.run/widget/masenf/?appearance=dark" scrolling="no" style="width: 400px; height: 300px; overflow: hidden" />
+<iframe src="https://github-stats-widget.reflex.run/widget/masenf/?appearance=light" scrolling="no" style="width: 400px; height: 300px; overflow: hidden"></iframe>
 
 Follow my [Open Source work on Github](https://github.com/masenf)
