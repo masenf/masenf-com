@@ -23,9 +23,13 @@ IPFS
 Programming
 ------
 
+Check out my [Open Source work on Github](https://github.com/masenf)
+
+<iframe src="https://github-stats-widget.reflex.run/widget/masenf/?appearance=dark" style="width: 400px; height: 300px">
+
 Python
 ===========
 
 * [The Nine Circles of Python Dependency Hell](https://medium.com/knerd/the-nine-circles-of-python-dependency-hell-481d53e3e025) - a good primer on package dependency management
 
-More to come
+
